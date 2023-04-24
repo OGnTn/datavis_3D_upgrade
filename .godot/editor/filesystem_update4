@@ -1,0 +1,7 @@
+res://scenes/world.tscn
+res://assets/materials/marker_base.tres
+res://assets/themes/base_theme.tres
+res://scenes/marker.tscn
+res://scenes/info_container.tscn
+res://scenes/filter_container.tscn
+res://scenes/info_container_bar.tscn

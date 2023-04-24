@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbudmqsamo0e2"]
+
+[ext_resource type="Theme" uid="uid://bwjbjq5wytn2g" path="res://assets/themes/base_theme.tres" id="1_ormit"]
+
+[node name="InfoContainer" type="HBoxContainer"]
+clip_contents = true
+size_flags_stretch_ratio = 0.6
+
+[node name="InfoLabel" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_ormit")
+theme_override_font_sizes/font_size = 20
+text = "Meal"
+
+[node name="DataLabel" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_ormit")
+theme_override_colors/font_color = Color(0.584314, 0.768627, 0.313726, 1)
+theme_override_font_sizes/font_size = 21
+text = "00000000000"

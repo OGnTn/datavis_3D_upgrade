@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cama704hoflof"]
+
+[ext_resource type="Script" path="res://src/filter_container.gd" id="1_ly2k4"]
+[ext_resource type="Theme" uid="uid://bwjbjq5wytn2g" path="res://assets/themes/base_theme.tres" id="1_vxoxj"]
+
+[node name="InfoContainer" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.6
+script = ExtResource("1_ly2k4")
+
+[node name="InfoLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_vxoxj")
+theme_override_font_sizes/font_size = 20
+text = "Meal"
+
+[node name="InfoValue" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_vxoxj")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 0.1
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

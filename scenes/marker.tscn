@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0bh1mvyfee8f"]
+
+[ext_resource type="Script" path="res://src/marker.gd" id="1_tn3y7"]
+[ext_resource type="Material" uid="uid://smpkk7uvtm47" path="res://assets/materials/marker_base.tres" id="2_h66vs"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vcjt3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t2piy"]
+radius = 0.503329
+
+[node name="marker" type="Node3D"]
+transform = Transform3D(0.539, 0, 0, 0, 0.539, 0, 0, 0, 0.539, 0, 0, 0)
+script = ExtResource("1_tn3y7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_vcjt3")
+surface_material_override/0 = ExtResource("2_h66vs")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_t2piy")
+
+[node name="NameLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95261, 0)
+visible = false
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+render_priority = 100
+text = "MIAUW"
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

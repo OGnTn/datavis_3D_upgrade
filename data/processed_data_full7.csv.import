@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d15ugaer8wjsg"
+
+[deps]
+
+files=["res://data/processed_data_full7.city.translation", "res://data/processed_data_full7.country.translation", "res://data/processed_data_full7.meal.translation", "res://data/processed_data_full7.water.translation", "res://data/processed_data_full7.cigarettes.translation", "res://data/processed_data_full7.monthly.translation", "res://data/processed_data_full7.taxi.translation", "res://data/processed_data_full7.basic.translation", "res://data/processed_data_full7.internet.translation", "res://data/processed_data_full7.cinema.translation", "res://data/processed_data_full7.appartment.translation", "res://data/processed_data_full7.appartment.translation", "res://data/processed_data_full7.beer.translation", "res://data/processed_data_full7.beer.translation", "res://data/processed_data_full7.fruits.translation", "res://data/processed_data_full7.vegetables.translation", "res://data/processed_data_full7.latitude.translation", "res://data/processed_data_full7.longitude.translation"]
+
+source_file="res://data/processed_data_full7.csv"
+dest_files=["res://data/processed_data_full7.city.translation", "res://data/processed_data_full7.country.translation", "res://data/processed_data_full7.meal.translation", "res://data/processed_data_full7.water.translation", "res://data/processed_data_full7.cigarettes.translation", "res://data/processed_data_full7.monthly.translation", "res://data/processed_data_full7.taxi.translation", "res://data/processed_data_full7.basic.translation", "res://data/processed_data_full7.internet.translation", "res://data/processed_data_full7.cinema.translation", "res://data/processed_data_full7.appartment.translation", "res://data/processed_data_full7.appartment.translation", "res://data/processed_data_full7.beer.translation", "res://data/processed_data_full7.beer.translation", "res://data/processed_data_full7.fruits.translation", "res://data/processed_data_full7.vegetables.translation", "res://data/processed_data_full7.latitude.translation", "res://data/processed_data_full7.longitude.translation"]
+
+[params]
+
+compress=true
+delimiter=0

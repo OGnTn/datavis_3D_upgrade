@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://duj6id1mxkjvn"
+
+[deps]
+
+files=["res://data/processed_data.country.translation", "res://data/processed_data.city.translation", "res://data/processed_data.language.translation", "res://data/processed_data.meal.translation", "res://data/processed_data.water.translation", "res://data/processed_data.cigarettes.translation", "res://data/processed_data.monthly.translation", "res://data/processed_data.taxi.translation", "res://data/processed_data.basic.translation", "res://data/processed_data.internet.translation", "res://data/processed_data.cinema.translation", "res://data/processed_data.appartment.translation", "res://data/processed_data.appartment.translation", "res://data/processed_data.beer.translation", "res://data/processed_data.beer.translation", "res://data/processed_data.fruits.translation", "res://data/processed_data.vegetables.translation", "res://data/processed_data.location.translation", "res://data/processed_data.latitude.translation", "res://data/processed_data.longitude.translation"]
+
+source_file="res://data/processed_data.csv"
+dest_files=["res://data/processed_data.country.translation", "res://data/processed_data.city.translation", "res://data/processed_data.language.translation", "res://data/processed_data.meal.translation", "res://data/processed_data.water.translation", "res://data/processed_data.cigarettes.translation", "res://data/processed_data.monthly.translation", "res://data/processed_data.taxi.translation", "res://data/processed_data.basic.translation", "res://data/processed_data.internet.translation", "res://data/processed_data.cinema.translation", "res://data/processed_data.appartment.translation", "res://data/processed_data.appartment.translation", "res://data/processed_data.beer.translation", "res://data/processed_data.beer.translation", "res://data/processed_data.fruits.translation", "res://data/processed_data.vegetables.translation", "res://data/processed_data.location.translation", "res://data/processed_data.latitude.translation", "res://data/processed_data.longitude.translation"]
+
+[params]
+
+compress=true
+delimiter=0
