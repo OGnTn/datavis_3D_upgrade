@@ -1,0 +1,22 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://dh4be725y63ep"]
+
+[ext_resource type="Texture2D" uid="uid://dhjwujmp5nse8" path="res://assets/skyboxes/Skyboxes/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="1_dybn6"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qeudi"]
+panorama = ExtResource("1_dybn6")
+
+[sub_resource type="Sky" id="Sky_od4da"]
+sky_material = SubResource("PanoramaSkyMaterial_qeudi")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_od4da")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.27
+reflected_light_source = 2
+fog_light_color = Color(0.470588, 0.505882, 0.560784, 1)
+fog_light_energy = 0.05
+fog_sun_scatter = 0.38
+fog_sky_affect = 0.284
+volumetric_fog_density = 0.4395

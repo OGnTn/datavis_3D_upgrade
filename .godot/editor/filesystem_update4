@@ -5,3 +5,8 @@ res://scenes/marker.tscn
 res://scenes/info_container.tscn
 res://scenes/filter_container.tscn
 res://scenes/info_container_bar.tscn
+res://src/globals.gd
+res://src/globe.gd
+res://src/marker.gd
+res://src/CameraManager.gd
+res://assets/environments/world.tres

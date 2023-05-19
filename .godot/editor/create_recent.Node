@@ -1,3 +1,6 @@
+Sprite3D
+TextureRect
+MeshInstance3D
 VBoxContainer
 ProgressBar
 HSlider

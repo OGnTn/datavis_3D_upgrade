@@ -18,6 +18,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://src/globals.gd"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

@@ -31,11 +31,5 @@ func toggle_collapse():
 func _ready():
 	toggle_collapse()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_collapse_filter_pressed():
 	toggle_collapse()

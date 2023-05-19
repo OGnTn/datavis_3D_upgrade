@@ -7,8 +7,12 @@ var theta = 0
 var phi = 0
 var radius = 70
 var globe_radius = 42
+const max_fov = 90
+const min_fov = 10
+
 var zooming = false
 signal moved
+signal zoomed
 
 func _ready():
 	var init_angle = calc_sphere_angle(position, radius)
@@ -16,7 +20,10 @@ func _ready():
 	phi = init_angle.y
 	$"..".connect("unfocused", _on_unfocus)
 
-func _process(delta):
+func _process(_delta):
+	if zooming:
+		emit_signal("zoomed")
+	
 	look_at(Vector3.ZERO)
 
 func _input(event: InputEvent) -> void:
@@ -25,19 +32,24 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		pressed = event.pressed
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			fov = fov - zoomspeed
+			if(fov > min_fov):
+				fov = fov - zoomspeed
+				emit_signal("zoomed")
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			fov = fov + zoomspeed
+			if(fov < max_fov):
+				fov = fov + zoomspeed
+				emit_signal("zoomed")
 	if event is InputEventMouseMotion:
 		if pressed:
 			emit_signal("moved")
 			if $"..".dragging_slider == false:
 				var xMotion = event.relative.x
 				var yMotion = event.relative.y
-				var newTheta = theta + xMotion * panspeed
-				var newPhi = phi + -yMotion * panspeed
+				var newTheta = fmod(theta + xMotion * panspeed, 2* PI)
+				var newPhi = fmod(phi + -yMotion * panspeed, 2 * PI)
 				var angle = Vector2(newTheta, newPhi)
 				set_camera_pos_angle(angle)
+				
 
 func set_camera_pos_angle(_angle):
 	position = calc_sphere_pos(_angle)
@@ -57,10 +69,11 @@ func set_angle_to_marker(marker_pos: Vector3):
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_EXPO)
 	var markerAngle = calc_sphere_angle(marker_pos, globe_radius)
-	tween.tween_method(set_camera_pos_angle, Vector2(theta,phi), markerAngle, 0.5)
+	tween.tween_method(set_camera_pos_angle, Vector2(theta, phi), markerAngle, 0.5)
 	smooth_zoom(40)
 
 func smooth_zoom(_fov):
+	
 	zooming = true
 	var tween = create_tween()
 	tween.finished.connect(_on_zoom_finished)

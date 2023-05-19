@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0bh1mvyfee8f"]
+[gd_scene load_steps=6 format=3 uid="uid://b0bh1mvyfee8f"]
 
 [ext_resource type="Script" path="res://src/marker.gd" id="1_tn3y7"]
 [ext_resource type="Material" uid="uid://smpkk7uvtm47" path="res://assets/materials/marker_base.tres" id="2_h66vs"]
+[ext_resource type="Texture2D" uid="uid://cd3pbgwd14j12" path="res://assets/textures/highlight_circle_tex.svg" id="3_bjptq"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_vcjt3"]
 
@@ -21,14 +22,22 @@ surface_material_override/0 = ExtResource("2_h66vs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_t2piy")
 
+[node name="Highlight" type="Sprite3D" parent="."]
+visible = false
+pixel_size = 0.0026
+billboard = 1
+render_priority = -12
+texture = ExtResource("3_bjptq")
+
 [node name="NameLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95261, 0)
 visible = false
-pixel_size = 0.001
+pixel_size = 0.0026
 billboard = 1
 no_depth_test = true
 fixed_size = true
 render_priority = 100
+outline_render_priority = 1
 text = "MIAUW"
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

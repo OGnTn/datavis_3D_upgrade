@@ -15,6 +15,7 @@ var keys
 var ranges
 var filter_containers = {}
 var dragging_slider = false
+signal zoomed_globe
 
 @onready
 var info_panel = $UI/InfoPanel
@@ -33,23 +34,24 @@ func _ready():
 func add_marker(latitude, longitude, datadict):
 	var city_marker = city_marker_file.instantiate()
 	city_marker.datadict = datadict
+	city_marker.ranges = ranges
 	city_marker.connect("focused", _on_marker_focused)
+	connect("unfocused", city_marker._on_unfocus)
+	connect("zoomed_globe", city_marker._on_zoom)
 	if(latitude != null and longitude != null):
-		var position = lat_lon_to_3d(float(latitude), float(longitude), globe_radius)
-		city_marker.transform.origin = position
+		var pos = lat_lon_to_3d(float(latitude), float(longitude), globe_radius)
+		city_marker.transform.origin = pos
 		city_marker.name = datadict.get("city")
 		$earth_scene.add_child(city_marker)
 		markers[city_marker.name] = city_marker
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	
+	return city_marker
 	
 func set_filter_ui():
 	for i in range(3, len(keys) - 2):
 		filter_containers[keys[i]] = $UI/FilterPanel/FilterContainer.get_children()[i-3]
 		var filter_container_children = filter_containers[keys[i]].get_children()
-		filter_container_children[0].text = keys[i]
+		filter_container_children[0].text = Globals.names[keys[i]]
 		var slider:HSlider = filter_container_children[2]
 		slider.max_value = ranges[keys[i]][0]
 		slider.min_value = ranges[keys[i]][1]
@@ -59,10 +61,10 @@ func set_filter_ui():
 
 func _on_slider_drag_start():
 	dragging_slider = true
-func _on_slider_drag_stop(val):
+func _on_slider_drag_stop(_val):
 	dragging_slider = false
 
-func _on_slider_value_changed(val):
+func _on_slider_value_changed(_val):
 	var new_filter = {}
 	for filter_container in filter_containers:
 		var slider = filter_containers[filter_container].get_children()[2]
@@ -92,7 +94,7 @@ func _on_camera_moved():
 		current_marker.set_namelabel(false)
 		emit_signal("unfocused")
 		
-func set_marker_ui(dict: Dictionary, marker):
+func set_marker_ui(dict: Dictionary, _marker):
 	$UI/InfoPanel/NamePanel/CityLabel.text = dict['city']
 	$UI/InfoPanel/NamePanel/CountryLabel.text = dict['country']
 	$UI/FilterPanel.visible = false
@@ -103,6 +105,9 @@ func set_marker_ui(dict: Dictionary, marker):
 		var labels = containers[i - 2].get_children()[0].get_children()
 		var bar = containers[i - 2].get_children()[1].get_children()[0]
 		var bar_avg:ProgressBar = containers[i - 2].get_children()[1].get_children()[1]
+		var labelcontainer = containers[i - 2].get_children()[0]
+		containers[i - 2].tooltip_text = Globals.descriptions[dict.keys()[i]]
+		
 		
 		bar.max_value = ranges[key][0]
 		bar.min_value = ranges[key][1]
@@ -116,8 +121,6 @@ func set_marker_ui(dict: Dictionary, marker):
 		var max_value = ranges[key][0]
 		var avg_value = ranges[key][2]
 		
-		var scaled_min_value = (min_value - min_value) / (max_value - min_value)
-		var scaled_max_value = (max_value - min_value) / (max_value - min_value)
 		var scaled_avg_value = (avg_value - min_value) / (max_value - min_value)
 		var scaled_value = (val - min_value) / (max_value - min_value)
 		
@@ -129,7 +132,7 @@ func set_marker_ui(dict: Dictionary, marker):
 		bar_avg.min_value = ranges[key][1]
 		bar_avg.value = ranges[key][2]
 		
-		labels[0].text = key
+		labels[0].text = Globals.names[key]
 		labels[1].text = value
 
 func calculate_lerp(min_val, max_val, avg_val, val):
@@ -155,3 +158,7 @@ func set_filter(filter_dict: Dictionary):
 func reset_filter():
 	for marker in markers:
 		markers[marker].visible = true
+
+
+func _on_camera_3d_zoomed():
+	emit_signal("zoomed_globe", $Camera3D.fov)
