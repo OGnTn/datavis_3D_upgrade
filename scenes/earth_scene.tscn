@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtd1hmqjd7303"]
 
-[ext_resource type="Texture2D" uid="uid://u7oycdhjgq7f" path="res://assets/textures/globe/Surface.mat_baseColor.jpeg" id="1_qtxwh"]
-[ext_resource type="Texture2D" uid="uid://bi2pfp3idqyue" path="res://assets/models/earth_1.png" id="2_82ks7"]
+[ext_resource type="Texture2D" uid="uid://u7oycdhjgq7f" path="res://assets/textures/globe/surface.mat_basecolor.jpeg" id="1_qtxwh"]
+[ext_resource type="Texture2D" uid="uid://dn6lly2pcsuvx" path="res://assets/textures/globe/surface.mat_normal.jpeg" id="2_g7533"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioof4"]
 resource_name = "Surface.mat"
@@ -46,11 +46,11 @@ shadow_mesh = SubResource("ArrayMesh_n20f6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xp8ni"]
 albedo_texture = ExtResource("1_qtxwh")
-emission = Color(0.294118, 0.294118, 0.294118, 1)
-emission_energy_multiplier = 0.0
 normal_enabled = true
-normal_scale = 2.44
-normal_texture = ExtResource("2_82ks7")
+normal_scale = 16.0
+normal_texture = ExtResource("2_g7533")
+heightmap_flip_binormal = true
+heightmap_texture = ExtResource("2_g7533")
 
 [node name="earth_scene" type="Node3D"]
 

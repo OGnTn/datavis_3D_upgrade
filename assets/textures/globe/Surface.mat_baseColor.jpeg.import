@@ -3,16 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://u7oycdhjgq7f"
-path.s3tc="res://.godot/imported/Surface.mat_baseColor.jpeg-3d3c113df14f53ee78dda3576b75ec2b.s3tc.ctex"
+path.s3tc="res://.godot/imported/surface.mat_basecolor.jpeg-87b0179128d378bca9f54dff0e119657.s3tc.ctex"
+path.etc2="res://.godot/imported/surface.mat_basecolor.jpeg-87b0179128d378bca9f54dff0e119657.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/textures/globe/Surface.mat_baseColor.jpeg"
-dest_files=["res://.godot/imported/Surface.mat_baseColor.jpeg-3d3c113df14f53ee78dda3576b75ec2b.s3tc.ctex"]
+source_file="res://assets/textures/globe/surface.mat_basecolor.jpeg"
+dest_files=["res://.godot/imported/surface.mat_basecolor.jpeg-87b0179128d378bca9f54dff0e119657.s3tc.ctex", "res://.godot/imported/surface.mat_basecolor.jpeg-87b0179128d378bca9f54dff0e119657.etc2.ctex"]
 
 [params]
 
@@ -23,7 +24,7 @@ compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
-mipmaps/limit=-1
+mipmaps/limit=5
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true

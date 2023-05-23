@@ -13,7 +13,7 @@ var clicked_mat = load("res://assets/materials/marker_clicked.tres")
 var calc_mat
 var average = 0
 const base_scale = 0.6
-const scale_offset = 0
+const scale_offset = 0.1
 var is_focus = false
 
 

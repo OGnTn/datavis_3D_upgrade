@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://src/marker.gd" id="1_tn3y7"]
 [ext_resource type="Material" uid="uid://smpkk7uvtm47" path="res://assets/materials/marker_base.tres" id="2_h66vs"]
-[ext_resource type="Texture2D" uid="uid://cd3pbgwd14j12" path="res://assets/textures/highlight_circle_tex.svg" id="3_bjptq"]
+[ext_resource type="Texture2D" uid="uid://cd3pbgwd14j12" path="res://assets/textures/highlight_circle_tex.svg" id="3_bls74"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_vcjt3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_t2piy"]
-radius = 0.503329
+radius = 0.837703
 
 [node name="marker" type="Node3D"]
 transform = Transform3D(0.539, 0, 0, 0, 0.539, 0, 0, 0, 0.539, 0, 0, 0)
@@ -27,7 +27,7 @@ visible = false
 pixel_size = 0.0026
 billboard = 1
 render_priority = -12
-texture = ExtResource("3_bjptq")
+texture = ExtResource("3_bls74")
 
 [node name="NameLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95261, 0)

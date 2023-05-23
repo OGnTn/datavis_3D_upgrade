@@ -1,17 +1,18 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
 uid="uid://btfpjfwcm1x34"
+path="res://.godot/imported/processed_data_ranges.csv-d6a6cab332d72ac64cb2af6a708a0c5d.res"
 
 [deps]
 
-files=["res://data/processed_data_ranges.max.translation", "res://data/processed_data_ranges.min.translation", "res://data/processed_data_ranges.avg.translation"]
-
 source_file="res://data/processed_data_ranges.csv"
-dest_files=["res://data/processed_data_ranges.max.translation", "res://data/processed_data_ranges.min.translation", "res://data/processed_data_ranges.avg.translation"]
+dest_files=["res://.godot/imported/processed_data_ranges.csv-d6a6cab332d72ac64cb2af6a708a0c5d.res"]
 
 [params]
 
-compress=true
 delimiter=0
+headers=true
+detect_numbers=false
+force_float=false

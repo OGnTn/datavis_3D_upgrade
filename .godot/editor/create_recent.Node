@@ -1,3 +1,6 @@
+Label
+PanelContainer
+Control
 Sprite3D
 TextureRect
 MeshInstance3D
@@ -8,10 +11,7 @@ Button
 HSeparator
 HSplitContainer
 Panel
-Control
-Label
 HBoxContainer
-PanelContainer
 GridContainer
 BoxContainer
 SplitContainer

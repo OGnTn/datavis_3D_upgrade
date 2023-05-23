@@ -2,6 +2,7 @@ extends Node3D
 var city_marker_file = preload("res://scenes/marker.tscn")
 var info_label_file = preload("res://scenes/info_container_bar.tscn")
 var filter_container_file = preload("res://scenes/filter_container.tscn")
+var uni_container_file = preload("res://scenes/uni_container.tscn")
 #var earth = $earth_scene
 var globe_radius = 42.5
 
@@ -11,7 +12,7 @@ signal unfocused
 var current_marker
 
 var markers = {}
-var keys
+var keys = Globals.keys
 var ranges
 var filter_containers = {}
 var dragging_slider = false
@@ -41,7 +42,7 @@ func add_marker(latitude, longitude, datadict):
 	if(latitude != null and longitude != null):
 		var pos = lat_lon_to_3d(float(latitude), float(longitude), globe_radius)
 		city_marker.transform.origin = pos
-		city_marker.name = datadict.get("city")
+		city_marker.name = datadict.get("city") + ", " + datadict.get("country")
 		$earth_scene.add_child(city_marker)
 		markers[city_marker.name] = city_marker
 	
@@ -97,6 +98,18 @@ func _on_camera_moved():
 func set_marker_ui(dict: Dictionary, _marker):
 	$UI/InfoPanel/NamePanel/CityLabel.text = dict['city']
 	$UI/InfoPanel/NamePanel/CountryLabel.text = dict['country']
+	var unis = Globals.universities.filter(func(unidict): return (unidict['country'] == dict['country'] and unidict['city'] == dict['city']))
+	print(unis)
+	var UniPanel = $UI/InfoPanel/UniContainer/UniPanel
+	var children = UniPanel.get_children()
+	for i in children.size():
+		if(i != 0):
+			children[i].queue_free()
+	for uni in unis:
+		var uni_container = uni_container_file.instantiate()
+		UniPanel.add_child(uni_container)
+		uni_container.get_node("UniLabel").text = uni['university']
+	
 	$UI/FilterPanel.visible = false
 	var containers = $UI/InfoPanel/CostContainer/CostPanel.get_children()
 	for i in range(3, len(containers) + 2):
@@ -133,7 +146,7 @@ func set_marker_ui(dict: Dictionary, _marker):
 		bar_avg.value = ranges[key][2]
 		
 		labels[0].text = Globals.names[key]
-		labels[1].text = value
+		labels[1].text = str(value)
 
 func calculate_lerp(min_val, max_val, avg_val, val):
 	var v = 2 * (val - avg_val) /(max_val - min_val) + 1

@@ -1,17 +1,18 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
-uid="uid://b7ag7jggyhetq"
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+uid="uid://cjvspxqthg7hu"
+path="res://.godot/imported/processed_data_full8.csv-e8a6ddb4c3cba7bb110ce053a07dabd6.res"
 
 [deps]
 
-files=["res://data/processed_data_full8.city.translation", "res://data/processed_data_full8.country.translation", "res://data/processed_data_full8.meal.translation", "res://data/processed_data_full8.water.translation", "res://data/processed_data_full8.cigarettes.translation", "res://data/processed_data_full8.monthly.translation", "res://data/processed_data_full8.taxi.translation", "res://data/processed_data_full8.basic.translation", "res://data/processed_data_full8.internet.translation", "res://data/processed_data_full8.cinema.translation", "res://data/processed_data_full8.appartment.translation", "res://data/processed_data_full8.appartment.translation", "res://data/processed_data_full8.beer.translation", "res://data/processed_data_full8.beer.translation", "res://data/processed_data_full8.fruits.translation", "res://data/processed_data_full8.vegetables.translation", "res://data/processed_data_full8.latitude.translation", "res://data/processed_data_full8.longitude.translation"]
-
 source_file="res://data/processed_data_full8.csv"
-dest_files=["res://data/processed_data_full8.city.translation", "res://data/processed_data_full8.country.translation", "res://data/processed_data_full8.meal.translation", "res://data/processed_data_full8.water.translation", "res://data/processed_data_full8.cigarettes.translation", "res://data/processed_data_full8.monthly.translation", "res://data/processed_data_full8.taxi.translation", "res://data/processed_data_full8.basic.translation", "res://data/processed_data_full8.internet.translation", "res://data/processed_data_full8.cinema.translation", "res://data/processed_data_full8.appartment.translation", "res://data/processed_data_full8.appartment.translation", "res://data/processed_data_full8.beer.translation", "res://data/processed_data_full8.beer.translation", "res://data/processed_data_full8.fruits.translation", "res://data/processed_data_full8.vegetables.translation", "res://data/processed_data_full8.latitude.translation", "res://data/processed_data_full8.longitude.translation"]
+dest_files=["res://.godot/imported/processed_data_full8.csv-e8a6ddb4c3cba7bb110ce053a07dabd6.res"]
 
 [params]
 
-compress=true
 delimiter=0
+headers=true
+detect_numbers=true
+force_float=true

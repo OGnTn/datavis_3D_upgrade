@@ -3,16 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhjwujmp5nse8"
-path.s3tc="res://.godot/imported/AllSkyFree_Sky_EpicBlueSunset_Equirect.png-2f9f31a46fbafb9b6a7fca483e2e8aac.s3tc.ctex"
+path.s3tc="res://.godot/imported/allskyfree_sky_epicbluesunset_equirect.png-c0b81adc5b1f8bc74efa8647f9d557c8.s3tc.ctex"
+path.etc2="res://.godot/imported/allskyfree_sky_epicbluesunset_equirect.png-c0b81adc5b1f8bc74efa8647f9d557c8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/skyboxes/Skyboxes/AllSkyFree_Sky_EpicBlueSunset_Equirect.png"
-dest_files=["res://.godot/imported/AllSkyFree_Sky_EpicBlueSunset_Equirect.png-2f9f31a46fbafb9b6a7fca483e2e8aac.s3tc.ctex"]
+source_file="res://assets/skyboxes/skyboxes/allskyfree_sky_epicbluesunset_equirect.png"
+dest_files=["res://.godot/imported/allskyfree_sky_epicbluesunset_equirect.png-c0b81adc5b1f8bc74efa8647f9d557c8.s3tc.ctex", "res://.godot/imported/allskyfree_sky_epicbluesunset_equirect.png-c0b81adc5b1f8bc74efa8647f9d557c8.etc2.ctex"]
 
 [params]
 
@@ -23,7 +24,7 @@ compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
-mipmaps/limit=-1
+mipmaps/limit=5
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true

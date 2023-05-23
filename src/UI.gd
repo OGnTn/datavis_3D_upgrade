@@ -30,6 +30,7 @@ func toggle_collapse():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	toggle_collapse()
+	pass
 
 func _on_collapse_filter_pressed():
 	toggle_collapse()

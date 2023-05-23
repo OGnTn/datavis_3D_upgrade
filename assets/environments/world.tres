@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://dh4be725y63ep"]
 
-[ext_resource type="Texture2D" uid="uid://dhjwujmp5nse8" path="res://assets/skyboxes/Skyboxes/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="1_dybn6"]
+[ext_resource type="Texture2D" uid="uid://dhjwujmp5nse8" path="res://assets/skyboxes/skyboxes/allskyfree_sky_epicbluesunset_equirect.png" id="1_dybn6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qeudi"]
 panorama = ExtResource("1_dybn6")
@@ -13,7 +13,7 @@ background_mode = 2
 sky = SubResource("Sky_od4da")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.27
+ambient_light_sky_contribution = 0.28
 reflected_light_source = 2
 fog_light_color = Color(0.470588, 0.505882, 0.560784, 1)
 fog_light_energy = 0.05

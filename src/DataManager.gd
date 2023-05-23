@@ -1,17 +1,31 @@
 extends Node3D
 
+var csv = preload("res://data/processed_data_full11.csv")
+var rangedata = preload("res://data/processed_data_ranges.csv")
+var unis = preload("res://data/universities.csv")
 
 @onready var globe = $".."
 signal loaded_data
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var data = load_csv_file("res://data/processed_data_full8.csv")
-	var ranges = load_ranges("res://data/processed_data_ranges.csv")
+	#var data = load_csv_file(csv_path)
+	#print(data[0])
+	var data = csv.records
+	#print("########################################################")
+	#print(datarec[0])
+	#var ranges = load_ranges("res://data/processed_data_ranges.csv")
+	var rangedatarec = rangedata.records
+	Globals.universities = unis.records
 	
+	
+	#print(rangedatarec)
+	var clean = {}
 	var averages = []
 	var avg = 0;
-	
+	for i in rangedatarec.size():
+		clean[rangedatarec[i]["keys"]] = [float(rangedatarec[i]["max"]), float(rangedatarec[i]["min"]), float(rangedatarec[i]["avg"])]
+	var ranges = clean
 	for i in ranges.values():
 		averages.append(float(i[2]))
 		avg += float(i[2])
@@ -40,7 +54,7 @@ func load_csv_file(path):
 	print(len(lines))
 	var data = []
 	var keys = lines[0].split(",")
-	$"..".keys = keys
+	print(keys)
 	
 	for l in range(len(lines)):
 		if l != 0:

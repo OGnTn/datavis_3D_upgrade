@@ -10,13 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Datavis"
+config/name="Datavis_3D"
 run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://assets/icons/Datavis_Icon_cropped.png"
+config/windows_native_icon="res://assets/icons/Datavis_Icon_cropped.ico"
 
 [autoload]
 
@@ -29,7 +30,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/csv-data-importer/plugin.cfg")
 
 [filesystem]
 
@@ -46,5 +47,6 @@ Interact={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/msaa_3d=3
 anti_aliasing/quality/screen_space_aa=1
