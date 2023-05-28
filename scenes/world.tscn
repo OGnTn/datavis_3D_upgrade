@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcf7dxx8ug7ig"]
+[gd_scene load_steps=11 format=3 uid="uid://dcf7dxx8ug7ig"]
 
 [ext_resource type="Script" path="res://src/globe.gd" id="1_ofnld"]
 [ext_resource type="Script" path="res://src/CameraManager.gd" id="3_8x4wl"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://src/DataManager.gd" id="5_3j5ia"]
 [ext_resource type="Script" path="res://src/UI.gd" id="6_styet"]
 [ext_resource type="Theme" uid="uid://bwjbjq5wytn2g" path="res://assets/themes/base_theme.tres" id="6_uq2bt"]
+[ext_resource type="Script" path="res://scenes/zoom.gd" id="7_2pqu8"]
 [ext_resource type="PackedScene" uid="uid://dtd1hmqjd7303" path="res://scenes/earth_scene.tscn" id="7_aecr4"]
+[ext_resource type="Script" path="res://scenes/DataPanel.gd" id="8_hr4go"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duya0"]
 bg_color = Color(0, 0, 0, 0.709804)
@@ -21,6 +23,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 70, 0,
 fov = 85.2
 near = 0.032
 script = ExtResource("3_8x4wl")
+
+[node name="Timer" type="Timer" parent="Camera3D"]
+wait_time = 0.563
+one_shot = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_ivy2c")
@@ -181,7 +187,87 @@ grow_vertical = 0
 size_flags_horizontal = 0
 text = "Filters"
 
+[node name="VSlider" type="VSlider" parent="UI"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -225.0
+offset_right = -50.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme = ExtResource("6_uq2bt")
+min_value = 10.0
+max_value = 90.0
+value = 85.0
+script = ExtResource("7_2pqu8")
+
+[node name="DataPanelButton" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Data origin"
+
+[node name="DataPanel" type="Panel" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -257.0
+offset_top = 57.0
+offset_right = 287.0
+offset_bottom = 771.0
+grow_horizontal = 2
+script = ExtResource("8_hr4go")
+
+[node name="Label" type="Label" parent="UI/DataPanel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 17.0
+offset_right = 500.0
+offset_bottom = 108.0
+theme_override_font_sizes/font_size = 53
+text = "Data Origin"
+
+[node name="Label2" type="Label" parent="UI/DataPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.037
+anchor_bottom = 0.016
+offset_left = 14.0
+offset_top = 104.0
+offset_right = 503.872
+offset_bottom = 222.576
+text = "https://www.kaggle.com/datasets/mvieira101/global-cost-of-living
+https://www.kaggle.com/datasets/berkaycihan/computer-science-master-programs-in-europe
+https://www.kaggle.com/datasets/padhmam/qs-world-university-rankings-2017-2022"
+autowrap_mode = 3
+
+[node name="CloseDataPanelButton" type="Button" parent="UI/DataPanel"]
+layout_mode = 0
+offset_left = 485.0
+offset_right = 543.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 37
+text = "X"
+
 [node name="earth_scene" parent="." instance=ExtResource("7_aecr4")]
 
 [connection signal="zoomed" from="Camera3D" to="." method="_on_camera_3d_zoomed"]
 [connection signal="pressed" from="UI/FilterPanel/CollapseFilter" to="UI" method="_on_collapse_filter_pressed"]
+[connection signal="value_changed" from="UI/VSlider" to="UI/VSlider" method="_on_value_changed"]
+[connection signal="pressed" from="UI/DataPanelButton" to="UI/DataPanel" method="_on_data_panel_button_pressed"]
+[connection signal="pressed" from="UI/DataPanel/CloseDataPanelButton" to="UI/DataPanel" method="_on_close_data_panel_button_pressed"]

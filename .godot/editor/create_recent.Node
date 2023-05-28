@@ -1,4 +1,8 @@
+Button
 Label
+Panel
+VSlider
+Timer
 PanelContainer
 Control
 Sprite3D
@@ -7,10 +11,8 @@ MeshInstance3D
 VBoxContainer
 ProgressBar
 HSlider
-Button
 HSeparator
 HSplitContainer
-Panel
 HBoxContainer
 GridContainer
 BoxContainer

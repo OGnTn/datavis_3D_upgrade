@@ -1,9 +1,9 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://dh4be725y63ep"]
 
-[ext_resource type="Texture2D" uid="uid://dhjwujmp5nse8" path="res://assets/skyboxes/skyboxes/allskyfree_sky_epicbluesunset_equirect.png" id="1_dybn6"]
+[ext_resource type="Texture2D" uid="uid://dqbjxvgeejt1k" path="res://assets/skyboxes/skyboxes/allskyfree_sky_epicbluesunset_equirect_lowres.png" id="1_va5yf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qeudi"]
-panorama = ExtResource("1_dybn6")
+panorama = ExtResource("1_va5yf")
 
 [sub_resource type="Sky" id="Sky_od4da"]
 sky_material = SubResource("PanoramaSkyMaterial_qeudi")

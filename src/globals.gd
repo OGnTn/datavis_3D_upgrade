@@ -6,7 +6,9 @@ var min = 0
 var max = 0
 var keys = ["university", "city", "country", "meal_inexpensive_restaurant", "water", "cigarettes", "monthly_pass", "taxi", "basic", "internet", "cinema", "appartment_centre", "appartment_outside_centre", "beer_restaurant", "beer_market", "fruits", "vegetables", "latitude", "longitude"]
 
-var universities = {}
+var cities = {}
+
+var universities = []
 var descriptions = {
 	"meal_inexpensive_restaurant": "Meal at an inexpensive Restaurant (USD)",
 	"cigarettes": "Cigarettes 20 Pack (Marlboro) (USD)",

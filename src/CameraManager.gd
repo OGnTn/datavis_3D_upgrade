@@ -27,8 +27,9 @@ func _process(_delta):
 	look_at(Vector3.ZERO)
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_pressed("Interact"):
+	if Input.is_action_pressed("Interact") and $Timer.is_stopped():
 		set_angle_to_marker(Vector3(2.011, 32.571, 26.44))
+		$Timer.start()
 	if event is InputEventMouseButton:
 		pressed = event.pressed
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
@@ -40,7 +41,7 @@ func _input(event: InputEvent) -> void:
 				fov = fov + zoomspeed
 				emit_signal("zoomed")
 	if event is InputEventMouseMotion:
-		if pressed:
+		if pressed and $Timer.is_stopped():
 			emit_signal("moved")
 			if $"..".dragging_slider == false:
 				var xMotion = event.relative.x
@@ -50,6 +51,9 @@ func _input(event: InputEvent) -> void:
 				var angle = Vector2(newTheta, newPhi)
 				set_camera_pos_angle(angle)
 				
+
+func emit_zoomed():
+	emit_signal("zoomed")
 
 func set_camera_pos_angle(_angle):
 	position = calc_sphere_pos(_angle)
@@ -65,6 +69,8 @@ func calc_sphere_angle(_pos, _radius):
 	return Vector2(_theta, _phi)
 
 func set_angle_to_marker(marker_pos: Vector3):
+	emit_signal("moved")
+	$Timer.start()
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_EXPO)

@@ -23,6 +23,12 @@ config/windows_native_icon="res://assets/icons/Datavis_Icon_cropped.ico"
 
 Globals="*res://src/globals.gd"
 
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/stretch/aspect="ignore"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

@@ -1,6 +1,6 @@
 extends Node3D
 
-var csv = preload("res://data/processed_data_full11.csv")
+var csv = preload("res://data/processed_data_full9.csv")
 var rangedata = preload("res://data/processed_data_ranges.csv")
 var unis = preload("res://data/universities.csv")
 
@@ -16,7 +16,9 @@ func _ready():
 	#print(datarec[0])
 	#var ranges = load_ranges("res://data/processed_data_ranges.csv")
 	var rangedatarec = rangedata.records
-	Globals.universities = unis.records
+	for d in data:
+		Globals.universities.append({"city": d["city"], "country": d["country"], "university": d["university"]})
+	#Globals.universities = unis.records
 	
 	
 	#print(rangedatarec)

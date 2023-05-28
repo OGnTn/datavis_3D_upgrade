@@ -40,11 +40,13 @@ func add_marker(latitude, longitude, datadict):
 	connect("unfocused", city_marker._on_unfocus)
 	connect("zoomed_globe", city_marker._on_zoom)
 	if(latitude != null and longitude != null):
-		var pos = lat_lon_to_3d(float(latitude), float(longitude), globe_radius)
-		city_marker.transform.origin = pos
-		city_marker.name = datadict.get("city") + ", " + datadict.get("country")
-		$earth_scene.add_child(city_marker)
-		markers[city_marker.name] = city_marker
+		if(!Globals.cities.has(datadict.get("city") + datadict.get("country"))):
+			var pos = lat_lon_to_3d(float(latitude), float(longitude), globe_radius)
+			city_marker.transform.origin = pos
+			city_marker.name = datadict.get("city") + ", " + datadict.get("country")
+			Globals.cities[(datadict.get("city") + datadict.get("country"))] = 1
+			$earth_scene.add_child(city_marker)
+			markers[city_marker.name] = city_marker
 	
 	return city_marker
 	
@@ -56,6 +58,7 @@ func set_filter_ui():
 		var slider:HSlider = filter_container_children[2]
 		slider.max_value = ranges[keys[i]][0]
 		slider.min_value = ranges[keys[i]][1]
+		slider.value = slider.max_value
 		slider.connect("value_changed", _on_slider_value_changed)
 		slider.connect("drag_started", _on_slider_drag_start)
 		slider.connect("drag_ended", _on_slider_drag_stop)
@@ -79,7 +82,7 @@ func lat_lon_to_3d(latitude_degrees: float, longitude_degrees: float, radius: fl
 	var y = radius * sin(latitude)
 	var z = radius * cos(latitude) * cos(longitude)
 	return Vector3(x, y, z)
-	
+
 func _on_marker_focused(marker: Node3D, marker_pos: Vector3, datadict: Dictionary):
 	$Camera3D.set_angle_to_marker(marker_pos)
 	info_panel.visible = true
@@ -87,6 +90,7 @@ func _on_marker_focused(marker: Node3D, marker_pos: Vector3, datadict: Dictionar
 	marker.set_namelabel(true)
 	set_marker_ui(datadict, marker)
 	state = state_set.FOCUSED
+	$UI/VSlider.visible = false
 func _on_camera_moved():
 	if state == state_set.FOCUSED:
 		info_panel.visible = false
@@ -94,12 +98,13 @@ func _on_camera_moved():
 		state = state_set.UNFOCUSED
 		current_marker.set_namelabel(false)
 		emit_signal("unfocused")
-		
+		$UI/VSlider.visible = true
+
 func set_marker_ui(dict: Dictionary, _marker):
 	$UI/InfoPanel/NamePanel/CityLabel.text = dict['city']
 	$UI/InfoPanel/NamePanel/CountryLabel.text = dict['country']
 	var unis = Globals.universities.filter(func(unidict): return (unidict['country'] == dict['country'] and unidict['city'] == dict['city']))
-	print(unis)
+	#print(unis)
 	var UniPanel = $UI/InfoPanel/UniContainer/UniPanel
 	var children = UniPanel.get_children()
 	for i in children.size():
@@ -161,7 +166,7 @@ func set_filter(filter_dict: Dictionary):
 			#print(float(filter_dict[filter]))
 			var marker_value = abs(float(markers[marker].datadict[filter]))
 			var filter_value = abs(float(filter_dict[filter]))
-			if marker_value < filter_value:
+			if marker_value > filter_value:
 				#print("Marker: " + markers[marker].name + "disabled")
 				markers[marker].visible = false
 				filtered = true
